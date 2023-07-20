@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:layout_marginBottom="10dp">
+    <ImageView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:src="@mipmap/ic_launcher_round"
+        android:id="@+id/pimg"/>
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_toRightOf="@+id/pimg"
+        android:layout_height="wrap_content"
+        android:fontFamily="@font/averia_libre"
+        android:text="Test"
+        android:id="@+id/ptxtname"
+        android:textAlignment="center"
+        android:textSize="25sp"
+        android:layout_marginLeft="10dp"
+        android:layout_marginTop="20dp"/>
+
+    <Button
+        android:id="@+id/ptxtadd"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="20sp"
+        android:layout_marginRight="35dp"
+        android:layout_marginLeft="15sp"
+        android:text="ADD"
+        android:textAlignment="center"
+        android:textSize="20sp"
+        android:textColor="@color/black"
+        android:background="@drawable/designlogin"/>
+
+</LinearLayout>
