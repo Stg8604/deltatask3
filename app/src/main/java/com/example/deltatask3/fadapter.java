@@ -1,6 +1,5 @@
 package com.example.deltatask3;
 
-
 import static com.example.deltatask3.SplitActivity.data4;
 
 import android.content.Context;
@@ -13,11 +12,11 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import java.util.List;
 
-public class padapter extends RecyclerView.Adapter<tViewHolder> {
+public class fadapter extends RecyclerView.Adapter<tViewHolder> {
     Context context;
-    List<pdata> data;
+    List<odata> data;
 
-    public padapter(Context context, List<pdata> data) {
+    public fadapter(Context context, List<odata> data) {
         this.context = context;
         this.data = data;
     }
@@ -30,17 +29,9 @@ public class padapter extends RecyclerView.Adapter<tViewHolder> {
 
     @Override
     public void onBindViewHolder(@NonNull tViewHolder holder, int position) {
-        holder.pname.setText(data.get(position).getPname());
-        holder.pbtn.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                data.get(position).setAdd("Added");
-                holder.pbtn.setText(data.get(position).getAdd());
-                //data.remove(data.get(position));
-                data4.add(data.get(position));
-                notifyDataSetChanged();
-            }
-        });
+        holder.fname.setText(data.get(position).getOname());
+        holder.fperson.setText(data.get(position).getOperson());
+        holder.famount.setText(String.valueOf(data.get(position).getAmt()));
     }
 
     @Override

@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Split Name"
+        android:fontFamily="@font/averia_libre"
+        android:textSize="15sp"
+        android:id="@+id/fname"
+        />
+    <TextView
+        android:layout_marginTop="10dp"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/fname"
+        android:text="Paid By Person"
+        android:fontFamily="@font/averia_libre"
+        android:textSize="15sp"
+        android:id="@+id/fperson"
+        />
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/fperson"
+        android:layout_marginTop="10dp"
+        android:text="Amount"
+        android:fontFamily="@font/averia_libre"
+        android:id="@+id/famount"
+        />
+
+</RelativeLayout>

@@ -29,6 +29,8 @@ import retrofit2.Retrofit;
 import retrofit2.converter.gson.GsonConverterFactory;
 
 public class LoginActivity extends AppCompatActivity {
+    ArrayList<kdata> kdate;
+    ArrayList<hdata> hdate;
     EditText edt1,edt2;
     private Button loginbtn;
     private String accesstoken;
@@ -69,7 +71,6 @@ public class LoginActivity extends AppCompatActivity {
                     accesstoken=response.body().getAccessToken();
                     //Toast.makeText(LoginActivity.this, accesstoken, Toast.LENGTH_SHORT).show();
                     getall();
-
 
                 } else {
                     Toast.makeText(LoginActivity.this,String.valueOf(state), Toast.LENGTH_SHORT).show();
@@ -162,6 +163,43 @@ public class LoginActivity extends AppCompatActivity {
             }
             @Override
             public void onFailure(Call<User> call, Throwable t) {
+                Log.d("API","Error");
+                System.out.println(t.getMessage());
+                Toast.makeText(LoginActivity.this, "Error: " + t.getMessage(), Toast.LENGTH_SHORT).show();
+            }
+        });
+    }
+    private void getyes(){
+        OkHttpClient httpClient = new OkHttpClient.Builder()
+                .addInterceptor(chain -> {
+                    Request originalRequest = chain.request();
+                    Request.Builder requestBuilder = originalRequest.newBuilder()
+                            .header("Authorization", "Bearer " + accesstoken);
+                    Request newRequest = requestBuilder.build();
+                    return chain.proceed(newRequest);
+                })
+                .build();
+        Retrofit retrofit = new Retrofit.Builder()
+                .baseUrl("http://localhost:8000/")
+                .client(httpClient)
+                .addConverterFactory(GsonConverterFactory.create())
+                .build();
+        Service service=retrofit.create(Service.class);
+        Call<ArrayList<kdata>> call=service.getKdata();
+        call.enqueue(new Callback<ArrayList<kdata>>() {
+            @Override
+            public void onResponse(Call<ArrayList<kdata>> call, Response<ArrayList<kdata>> response) {
+                int status=response.code();
+                if(response.isSuccessful()){
+                    Toast.makeText(LoginActivity.this, "Success", Toast.LENGTH_SHORT).show();
+                    kdate=response.body();
+                }
+                else{
+                    Toast.makeText(LoginActivity.this,String.valueOf(status), Toast.LENGTH_SHORT).show();
+                }
+            }
+            @Override
+            public void onFailure(Call<ArrayList<kdata>> call, Throwable t) {
                 Log.d("API","Error");
                 System.out.println(t.getMessage());
                 Toast.makeText(LoginActivity.this, "Error: " + t.getMessage(), Toast.LENGTH_SHORT).show();

@@ -3,6 +3,7 @@ package com.example.deltatask3;
 public class pdata {
     String pname;
     String pimage;
+    String add;
 
     public String getPname() {
         return pname;
@@ -20,8 +21,17 @@ public class pdata {
         this.pimage = pimage;
     }
 
-    public pdata(String pname, String pimage) {
+    public String getAdd() {
+        return add;
+    }
+
+    public void setAdd(String add) {
+        this.add = add;
+    }
+
+    public pdata(String pname, String pimage, String add) {
         this.pname = pname;
         this.pimage = pimage;
+        this.add=add;
     }
 }

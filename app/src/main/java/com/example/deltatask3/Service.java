@@ -2,6 +2,7 @@ package com.example.deltatask3;
 
 import android.media.session.MediaSession;
 
+import java.lang.reflect.Array;
 import java.util.ArrayList;
 
 import okhttp3.RequestBody;
@@ -54,4 +55,18 @@ public interface Service {
             @Field("name") String name,
             @Field("amount") float amount
     );
+    @GET("/users/me/splithistory")
+    Call<ArrayList<kdata>> getKdata();
+    @POST("/add/")
+    @FormUrlEncoded
+    Call<Void> spl(
+            @Field("username") String username,
+            @Field("gname") String gname,
+            @Field("name") String name,
+            @Field("image") String image
+    );
+    @GET("/users/me/grouphistory")
+    Call<ArrayList<idata>> getIdata();
+    @GET("/users/me/groupsplits")
+    Call<ArrayList<adata>> getadata();
 }

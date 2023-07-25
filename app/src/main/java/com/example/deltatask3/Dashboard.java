@@ -34,6 +34,7 @@ public class Dashboard extends AppCompatActivity {
     private TextView usetxt,owemoney,lentmoney;
     private CardView itransaction,isplit,hsplit;
     private String rec;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -69,7 +70,9 @@ public class Dashboard extends AppCompatActivity {
         hsplit.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                
+                Intent intent=new Intent(Dashboard.this,SplitHistory.class);
+                intent.putExtra("acc",rec);
+                startActivity(intent);
             }
         });
     }
