@@ -34,7 +34,6 @@ public class Dashboard extends AppCompatActivity {
     private TextView usetxt,owemoney,lentmoney;
     private CardView itransaction,isplit,hsplit;
     private String rec;
-
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);

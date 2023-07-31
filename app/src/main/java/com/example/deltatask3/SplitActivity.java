@@ -293,7 +293,7 @@ public class SplitActivity extends AppCompatActivity {
         getWindow().setEnterTransition(new Slide());
         final Dialog dialog = new Dialog(SplitActivity.this);
         dialog.requestWindowFeature(Window.FEATURE_NO_TITLE);
-        dialog.setCanceledOnTouchOutside(true);
+        dialog.setCanceledOnTouchOutside(false);
         dialog.setContentView(R.layout.d_open2);
         RecyclerView recyclerView=dialog.findViewById(R.id.recycleg);
         done=dialog.findViewById(R.id.idone);
@@ -321,7 +321,6 @@ public class SplitActivity extends AppCompatActivity {
                     Context context=getBaseContext();
                     data7=response.body();
                     Toast.makeText(context, data7.get(0).getGname(), Toast.LENGTH_SHORT).show();
-
                     ArrayList<pdata> ne=new ArrayList<>();
                     for(int i=0;i<data7.size();i++) {
                         if (i == 0 || data7.get(i).getGname().equals(data7.get(i - 1).getGname())) {
@@ -338,7 +337,6 @@ public class SplitActivity extends AppCompatActivity {
                     recyclerView.setLayoutManager(new LinearLayoutManager(context));
                     recyclerView.setAdapter(new radapter(getApplicationContext(),data8));
                     //Toast.makeText(context, String.valueOf(data7.size()), Toast.LENGTH_SHORT).show();
-
                     //Toast.makeText(context, String.valueOf(data3.size()), Toast.LENGTH_SHORT).show();
 
                 }
@@ -358,6 +356,7 @@ public class SplitActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 dialog.dismiss();
+                data8=new ArrayList<>();
             }
         });
         dialog.show();
